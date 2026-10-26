@@ -1,0 +1,29 @@
+# Dependencias y artefactos generados
+node_modules/
+coverage/
+dist/
+playwright-report/
+test-results/
+blob-report/
+**/e2e/.auth/
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+testsprite_tests/.env
+
+# Carpetas de trabajo generadas por TestSprite (los informes se versionan en evidencias/testsprite/)
+testsprite_tests/
+
+# Las evidencias sí se versionan aunque su carpeta se llame coverage
+!evidencias/coverage/
+!evidencias/coverage/**
+
+# Material original del taller (no forma parte del código)
+/app-usuarios.rar
+/Taller Pruebas - App de usuarios.docx
+
+# Sistema
+.DS_Store
+*.log
