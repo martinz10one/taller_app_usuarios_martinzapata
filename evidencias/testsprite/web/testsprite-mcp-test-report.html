@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>TestSprite — web</title><style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#1f2937;line-height:1.55}
+h1{border-bottom:3px solid #2563eb;padding-bottom:.4rem}
+h2{margin-top:2rem;color:#1e40af}
+h3{margin-top:1.5rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem}
+th,td{border:1px solid #d1d5db;padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{background:#eff6ff}
+code{background:#f3f4f6;padding:.1rem .3rem;border-radius:4px}
+a{color:#1d4ed8}
+blockquote{border-left:4px solid #93c5fd;background:#f8fafc;margin:1rem 0;padding:.5rem 1rem;color:#374151}
+</style></head>
+<body>
+<h1>TestSprite AI Testing Report (MCP) — Web</h1>
+<hr />
+<h2>1️⃣ Document Metadata</h2>
+<ul>
+<li><strong>Project Name:</strong> web (App de usuarios — frontend Vue 3)</li>
+<li><strong>Date:</strong> 2026-10-26</li>
+<li><strong>Prepared by:</strong> TestSprite AI Team; revisado y completado por Martin Zapata</li>
+<li><strong>Execution type:</strong> frontend, scope <code>codebase</code></li>
+<li><strong>Local endpoint:</strong> <code>http://localhost:5173</code></li>
+<li><strong>Credenciales de prueba:</strong> <code>admin@demo.com</code> / <code>Admin123!</code></li>
+<li><strong>PRD usado:</strong> <a href="../../../PRD.md"><code>PRD.md</code></a></li>
+<li><strong>Plan de pruebas:</strong> <a href="plan/testsprite_frontend_test_plan.json"><code>plan/testsprite_frontend_test_plan.json</code></a></li>
+<li><strong>Código analizado:</strong> <a href="code_summary.yaml"><code>code_summary.yaml</code></a></li>
+</ul>
+<hr />
+<h2>2️⃣ Requirement Validation Summary</h2>
+<h3>Requirement: Autenticación, registro y sesión</h3>
+<ul>
+<li><strong>Description:</strong> Login de administrador y de usuario normal, registro público, cierre de sesión y redirección según el rol.</li>
+</ul>
+<h4>Test TC001 Iniciar sesión como administrador</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC001_Iniciar_sesin_como_administrador.py">TC001</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/28ffb424-be38-4a95-ac0d-26d934d63426">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/28ffb424-be38-4a95-ac0d-26d934d63426</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Con <code>admin@demo.com</code> se entra al panel <code>/usuarios</code> y se ve la tabla de usuarios. En la ejecución 1 este caso quedó bloqueado por la inestabilidad del servidor de desarrollo; en producción pasó.</li>
+</ul>
+<h4>Test TC002 Registrar una cuenta nueva y acceder al destino correcto</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC002_Registrar_una_cuenta_nueva_y_acceder_al_destino_correcto.py">TC002</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/77edc857-ee32-4f9e-945f-61b5bb2864b0">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/77edc857-ee32-4f9e-945f-61b5bb2864b0</a></li>
+<li><strong>Status:</strong> ✅ Passed (run 3)</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> La ejecución 2 falló porque reutilizó <code>qa.visitante.20261026@example.com</code>, ya registrado y borrado lógicamente en la ejecución 1, y después de ver el aviso de email duplicado cambió el correo pero no volvió a pulsar «Crear cuenta». En la ejecución 3, con un email nuevo y reenviando el formulario, el registro pasó y redirigió a <code>/perfil</code>.</li>
+</ul>
+<h4>Test TC003 Crear cuenta y entrar al perfil</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC003_Crear_cuenta_y_entrar_al_perfil.py">TC003</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/92e96f11-a8e6-485f-9fb8-f9e86cb72a9b">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/92e96f11-a8e6-485f-9fb8-f9e86cb72a9b</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Tras crear la cuenta se muestran los datos del perfil y el rol <code>Usuario</code>.</li>
+</ul>
+<h4>Test TC004 Iniciar sesión como usuario normal</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC004_Iniciar_sesin_como_usuario_normal.py">TC004</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/dcceb6ca-b0a8-434a-bc0f-a053904ead06">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/dcceb6ca-b0a8-434a-bc0f-a053904ead06</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El usuario normal entra a <code>/perfil</code> y no ve el enlace de administración.</li>
+</ul>
+<h4>Test TC005 Cerrar sesión y volver al acceso público</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC005_Cerrar_sesin_y_volver_al_acceso_pblico.py">TC005</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/bff707e6-c223-4132-8a58-e5f0f0965e5f">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/bff707e6-c223-4132-8a58-e5f0f0965e5f</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> «Cerrar sesión» elimina la sesión y deja al visitante en <code>/login</code>; una ruta protegida vuelve a pedir autenticación.</li>
+</ul>
+<h4>Test TC007 Redirigir a la vista correcta según el rol al entrar</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC007_Redirigir_a_la_vista_correcta_segn_el_rol_al_entrar.py">TC007</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/a98a6a69-2baa-4e62-8885-e680f5524de5">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/a98a6a69-2baa-4e62-8885-e680f5524de5</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> <code>/</code> redirige a <code>/usuarios</code> para admin y a <code>/perfil</code> para usuario.</li>
+</ul>
+<hr />
+<h3>Requirement: Control de acceso por rol</h3>
+<ul>
+<li><strong>Description:</strong> Las rutas de administración están protegidas por la guarda <code>requiresAdmin</code>; sin sesión se redirige a login.</li>
+</ul>
+<h4>Test TC006 Bloquear acceso a usuarios para un usuario normal</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC006_Bloquear_acceso_a_usuarios_para_un_usuario_normal.py">TC006</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/50bbb6f9-3ac8-45a8-bc26-eb03c3c3b774">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/50bbb6f9-3ac8-45a8-bc26-eb03c3c3b774</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Un usuario autenticado sin rol admin que abre <code>/usuarios</code> termina en <code>/perfil</code>.</li>
+</ul>
+<h4>Test TC012 Bloquear el acceso a usuarios sin permisos</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC012_Bloquear_el_acceso_a_usuarios_sin_permisos.py">TC012</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/c9b04b9b-f895-4980-bf44-fc3304f3d54b">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/c9b04b9b-f895-4980-bf44-fc3304f3d54b</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Sin sesión, <code>/usuarios</code> redirige a <code>/login</code> y no se muestra contenido administrativo.</li>
+</ul>
+<hr />
+<h3>Requirement: Gestión de usuarios (admin)</h3>
+<ul>
+<li><strong>Description:</strong> Crear, editar, eliminar con confirmación, buscar y filtrar usuarios desde el panel de administración.</li>
+</ul>
+<h4>Test TC008 Eliminar lógicamente un usuario con confirmación</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC008_Eliminar_lgicamente_un_usuario_con_confirmacin.py">TC008</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/4dc1b414-93c0-45cf-9540-bd7fef8d7c52">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/4dc1b414-93c0-45cf-9540-bd7fef8d7c52</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El diálogo de confirmación elimina al usuario y la fila desaparece del listado.</li>
+</ul>
+<h4>Test TC009 Crear un usuario nuevo desde el panel de administración</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC009_Crear_un_usuario_nuevo_desde_el_panel_de_administracin.py">TC009</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/c8ee0b15-f7dc-443c-a202-1f7461ea4153">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/c8ee0b15-f7dc-443c-a202-1f7461ea4153</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El formulario valida los campos, crea el usuario y lo muestra en la tabla.</li>
+</ul>
+<h4>Test TC010 Editar un usuario existente desde el panel de administración</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC010_Editar_un_usuario_existente_desde_el_panel_de_administracin.py">TC010</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/22d939e7-f13e-4113-a080-437628e82e4d">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/22d939e7-f13e-4113-a080-437628e82e4d</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Los cambios de nombre/email se guardan y se reflejan en la tabla.</li>
+</ul>
+<h4>Test TC011 Editar un usuario existente</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC011_Editar_un_usuario_existente.py">TC011</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/e630cdfa-2e4a-488b-a399-c704331372ab">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/e630cdfa-2e4a-488b-a399-c704331372ab</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Caso duplicado del anterior generado por TestSprite; también pasa y confirma la persistencia.</li>
+</ul>
+<h4>Test TC013 Buscar usuarios en el listado</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC013_Buscar_usuarios_en_el_listado.py">TC013</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/060e4708-fd0c-49be-a135-548a71a68009">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/060e4708-fd0c-49be-a135-548a71a68009</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El buscador filtra por nombre/email y el contador de resultados cambia.</li>
+</ul>
+<h4>Test TC014 Buscar y filtrar usuarios desde el panel de administración</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC014_Buscar_y_filtrar_usuarios_desde_el_panel_de_administracin.py">TC014</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/3ffc1797-8e0b-4f79-bbda-dcc336acfabc">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/3ffc1797-8e0b-4f79-bbda-dcc336acfabc</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> La combinación de búsqueda y filtro por rol devuelve solo las filas esperadas.</li>
+</ul>
+<h4>Test TC015 Filtrar usuarios por rol</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run2/casos/TC015_Filtrar_usuarios_por_rol.py">TC015</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/06da11ab-ef85-43a0-9a4e-08fa11d8a0e4">https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/06da11ab-ef85-43a0-9a4e-08fa11d8a0e4</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El filtro <code>admin</code>/<code>usuario</code> reduce el listado correctamente.</li>
+</ul>
+<hr />
+<h2>3️⃣ Coverage &amp; Matching Metrics</h2>
+<p>Ejecuciones realizadas:</p>
+<table>
+<thead>
+<tr>
+<th>Ejecución</th>
+<th>Entorno</th>
+<th style="text-align: right;">Seleccionados</th>
+<th style="text-align: right;">✅ Passed</th>
+<th style="text-align: right;">❌ Failed</th>
+<th style="text-align: right;">⛔ Blocked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>run1</td>
+<td><code>vite dev</code> en 5173</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>run2</td>
+<td><code>vite preview</code> (build de producción) en 5173</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>run3</td>
+<td><code>vite preview</code>, solo TC002</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Ejecución 2: 14/15 (93,3 %).</strong> El único fallo, TC002, se analizó y se resolvió en la ejecución dirigida 3.</li>
+<li><strong>Resultado final considerando run2 + run3: 15/15 casos ejecutados pasan.</strong></li>
+<li>La ejecución 1 quedó bloqueada por la inestabilidad del servidor de desarrollo de Vite bajo carga concurrente, no por un fallo funcional.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th style="text-align: right;">Total Tests</th>
+<th style="text-align: right;">✅ Passed</th>
+<th style="text-align: right;">❌ Failed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autenticación, registro y sesión</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Control de acceso por rol</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Gestión de usuarios (admin)</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>15</strong></td>
+<td style="text-align: right;"><strong>15</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Evidencias en <a href="ejecuciones/"><code>ejecuciones/</code></a>. Paneles locales de TestSprite: <a href="../paneles/web-run1-6-15.png"><code>../paneles/web-run1-6-15.png</code></a>, <a href="../paneles/web-run2-14-15.png"><code>../paneles/web-run2-14-15.png</code></a> y <a href="../paneles/web-run3-tc002-1-1.png"><code>../paneles/web-run3-tc002-1-1.png</code></a>.</p>
+<hr />
+<h2>4️⃣ Key Gaps / Risks</h2>
+<blockquote>
+<p><strong>Casos no ejecutados:</strong> el plan generado tiene 28 casos; TestSprite limitó la ejecución a 15 casos de prioridad alta. Los 13 restantes (perfil, cambio de contraseña, validaciones de confirmación, 404) están cubiertos por las 129 pruebas de Vitest y los 29 flujos de Playwright del proyecto, pero no por esta ejecución de TestSprite.</p>
+<p><strong>Entorno:</strong> <code>vite dev</code> no es adecuado para pruebas concurrentes de TestSprite: la ejecución 1 produjo 9 páginas en blanco. Se pasó a <code>vite preview</code> con build de producción y se añadió <code>preview.proxy</code> para <code>/api</code> en <code>web/vite.config.js</code>. Este fue el hallazgo de configuración más útil de TestSprite.</p>
+<p><strong>Datos compartidos:</strong> los tests usan la base <code>app-usuarios-testsprite</code> y emails únicos. Un email de una cuenta borrada lógicamente sigue reservado por el índice único; la ejecución 2 reutilizó uno y provocó un falso fallo en TC002.</p>
+<p><strong>Duplicados del plan:</strong> TestSprite generó casos repetidos (TC010/TC011, TC013/TC014) y varios casos de perfil/contraseña que no llegaron a ejecutarse. No se modificaron las pruebas manuales para “hacerlas pasar”.</p>
+<p><strong>Valor añadido:</strong> la ejecución en navegador real validó login, registro, guards, CRUD, búsqueda, filtro y borrado sin mocks, y descubrió que el preview de producción necesitaba proxy hacia la API.</p>
+</blockquote>
+</body>
+</html>

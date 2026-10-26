@@ -1,0 +1,986 @@
+[
+  {
+    "id": "TC001",
+    "title": "Iniciar sesión como administrador",
+    "description": "Verifica que un administrador puede iniciar sesión y acceder al panel de usuarios con la navegación de admin.",
+    "category": "Inicio de sesión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid admin email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid admin password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the users management view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the authenticated header navigation is shown for an administrator"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Registrar una cuenta nueva y acceder al destino correcto",
+    "description": "Verifica que un visitante pueda crear una cuenta, quedar autenticado y ser redirigido al destino correspondiente a su rol.",
+    "category": "Navegación, sesión y 404",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /registro"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the registration name field with a new valid full name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the registration email field with a new valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the registration password field with a valid password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password confirmation field with the same valid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is authenticated and lands on the allowed destination"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the destination matches the expected role-based area"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Crear cuenta y entrar al perfil",
+    "description": "Verifica que un visitante puede registrarse correctamente, quedar autenticado y llegar a su vista privada correspondiente.",
+    "category": "Registro de cuenta",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /registro"
+      },
+      {
+        "type": "action",
+        "description": "Fill in full name with a unique test name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a unique test email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid password"
+      },
+      {
+        "type": "action",
+        "description": "Repeat the password with the same valid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the authenticated destination for a regular user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a logged-in session is active"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Iniciar sesión como usuario normal",
+    "description": "Verifica que un usuario autenticado puede iniciar sesión y acceder a su perfil con la navegación correspondiente.",
+    "category": "Inicio de sesión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid user email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid user password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the profile view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the authenticated header navigation is shown for a regular user"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Cerrar sesión y volver al acceso público",
+    "description": "Verifica que un usuario autenticado pueda cerrar sesión y regresar al punto de entrada público.",
+    "category": "Navegación, sesión y 404",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Use the sign-out action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the session has ended and the public entry point is shown"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Bloquear acceso a usuarios para un usuario normal",
+    "description": "Verifica que un usuario autenticado sin permisos no puede abrir el panel de administración y es redirigido a su vista permitida.",
+    "category": "Gestión de usuarios (admin)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid user email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid user password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to access the users management area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is redirected to the permitted authenticated view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Redirigir a la vista correcta según el rol al entrar",
+    "description": "Verifica que el inicio de sesión envía a cada persona a la vista privada que le corresponde según su rol.",
+    "category": "Inicio de sesión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid administrator email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid administrator password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the users management view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Eliminar lógicamente un usuario con confirmación",
+    "description": "Verifica que un administrador pueda confirmar la eliminación lógica de un usuario y ver que deja de aparecer como activo en el listado.",
+    "category": "Gestión de usuarios admin",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /usuarios"
+      },
+      {
+        "type": "action",
+        "description": "Start the delete action for an existing user"
+      },
+      {
+        "type": "action",
+        "description": "Confirm the deletion"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user no longer appears as an active record in the list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Crear un usuario nuevo desde el panel de administración",
+    "description": "Verifica que un administrador pueda crear un usuario nuevo y verlo aparecer en el listado.",
+    "category": "Gestión de usuarios admin",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /usuarios/nuevo"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the user form with valid name, email, role, and password values"
+      },
+      {
+        "type": "action",
+        "description": "Submit the user creation form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new user appears in the users list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Editar un usuario existente desde el panel de administración",
+    "description": "Verifica que un administrador pueda editar un usuario existente y ver los cambios reflejados en el listado.",
+    "category": "Gestión de usuarios admin",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /usuarios"
+      },
+      {
+        "type": "action",
+        "description": "Open the edit form for an existing user"
+      },
+      {
+        "type": "action",
+        "description": "Update the user with valid changes"
+      },
+      {
+        "type": "action",
+        "description": "Submit the user edit form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated user information is displayed in the users list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Editar un usuario existente",
+    "description": "Verifica que el administrador puede modificar los datos de un usuario existente y verlos reflejados después de guardar.",
+    "category": "Gestión de usuarios (admin)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid admin email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid admin password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the edit form for an existing user"
+      },
+      {
+        "type": "action",
+        "description": "Update the user name with a new valid value"
+      },
+      {
+        "type": "action",
+        "description": "Submit the user form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated user data is shown in the list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Bloquear el acceso a usuarios sin permisos",
+    "description": "Verifica que un usuario no administrador sea redirigido al destino permitido al intentar abrir el panel de administración.",
+    "category": "Navegación, sesión y 404",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /usuarios"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is redirected to the allowed destination"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the admin users panel is not displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Buscar usuarios en el listado",
+    "description": "Verifica que el administrador puede filtrar el listado de usuarios usando el buscador y ver resultados actualizados.",
+    "category": "Gestión de usuarios (admin)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid admin email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid admin password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Enter a search term in the users search field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user list updates to show filtered results"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Buscar y filtrar usuarios desde el panel de administración",
+    "description": "Verifica que un administrador pueda buscar y filtrar el listado de usuarios para encontrar registros concretos.",
+    "category": "Gestión de usuarios admin",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /usuarios"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a user name or email fragment"
+      },
+      {
+        "type": "action",
+        "description": "Select a role filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the filtered users list is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Filtrar usuarios por rol",
+    "description": "Verifica que el administrador puede cambiar el filtro de rol y ver solo los usuarios que coinciden.",
+    "category": "Gestión de usuarios (admin)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid admin email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid admin password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a role filter value"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user list updates to show only users matching the selected role"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Navegar entre páginas del listado de usuarios",
+    "description": "Verifica que el administrador puede paginar el listado y ver otro conjunto de usuarios.",
+    "category": "Gestión de usuarios (admin)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid admin email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid admin password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Move to the next page of the users list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a different set of users is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Paginación del listado de usuarios",
+    "description": "Verifica que un administrador pueda cambiar de página en el listado de usuarios y ver otro conjunto de resultados.",
+    "category": "Gestión de usuarios admin",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /usuarios"
+      },
+      {
+        "type": "action",
+        "description": "Click the next page control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a different page of users is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "Actualizar nombre y correo del perfil",
+    "description": "Verifica que un usuario autenticado puede guardar cambios en su nombre o correo y ver una confirmación de éxito.",
+    "category": "Perfil del usuario",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid user email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid user password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Update the profile name with a new valid value"
+      },
+      {
+        "type": "action",
+        "description": "Update the profile email with a new valid value"
+      },
+      {
+        "type": "action",
+        "description": "Save the profile changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated profile data is shown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Cambiar contraseña con validación correcta",
+    "description": "Verifica que un usuario autenticado puede cambiar su contraseña siguiendo la validación del formulario y recibir confirmación de éxito.",
+    "category": "Perfil del usuario",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid user email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid user password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Enter the current password in the password change form"
+      },
+      {
+        "type": "action",
+        "description": "Enter a new valid password in the password change form"
+      },
+      {
+        "type": "action",
+        "description": "Repeat the new password in the password change form"
+      },
+      {
+        "type": "action",
+        "description": "Save the password change"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "Ver datos del perfil autenticado",
+    "description": "Verifica que un usuario autenticado puede entrar a su perfil y ver sus datos actuales.",
+    "category": "Perfil del usuario",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a valid user email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid user password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the profile view shows the user's data"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC021",
+    "title": "Actualizar el email del perfil",
+    "description": "Verifica que un usuario autenticado pueda cambiar su email desde el perfil y ver el dato actualizado.",
+    "category": "Perfil y contraseña",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /perfil"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a new valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Save the profile changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated profile information is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Cambiar la contraseña desde el perfil",
+    "description": "Verifica que un usuario autenticado pueda cambiar su contraseña desde el perfil y recibir una confirmación de éxito.",
+    "category": "Perfil y contraseña",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /perfil"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the current password field with the existing password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the new password field with a valid new password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password confirmation field with the same valid new password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the password change"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a password updated confirmation is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "Mostrar la navegación según el rol",
+    "description": "Verifica que la cabecera muestre los enlaces correctos para un usuario autenticado según su rol.",
+    "category": "Navegación, sesión y 404",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the role-based navigation links are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Mostrar error al iniciar sesión con credenciales inválidas",
+    "description": "Verifica que un visitante ve un mensaje de error claro cuando intenta acceder con credenciales incorrectas.",
+    "category": "Inicio de sesión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with an invalid email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with an invalid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an invalid credentials error message is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC025",
+    "title": "Validar la confirmación de contraseña al cambiarla",
+    "description": "Verifica que el perfil muestre una validación cuando la nueva contraseña y su confirmación no coinciden.",
+    "category": "Perfil y contraseña",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /perfil"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the current password field with the existing password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the new password field with a valid new password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password confirmation field with a different valid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the password change"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a password confirmation validation message is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC026",
+    "title": "Abrir una ruta desconocida y volver al inicio",
+    "description": "Verifica que una ruta inexistente muestra la página 404 y ofrece un enlace para regresar al inicio.",
+    "category": "Navegación y rutas",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to an unknown route"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 404 page is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to return to the home page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the authenticated destination for their session"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC027",
+    "title": "Mostrar validación al repetir contraseña distinta",
+    "description": "Verifica que el formulario de registro rechaza una confirmación de contraseña distinta y muestra una validación visible.",
+    "category": "Registro de cuenta",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /registro"
+      },
+      {
+        "type": "action",
+        "description": "Fill in full name with a unique test name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in email with a unique test email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in password with a valid password"
+      },
+      {
+        "type": "action",
+        "description": "Repeat the password with a different valid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a password confirmation validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC028",
+    "title": "Mostrar la página 404 para una ruta desconocida",
+    "description": "Verifica que una URL inexistente muestre la página 404 y permita volver al inicio.",
+    "category": "Navegación, sesión y 404",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /una-ruta-inexistente"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 404 page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the return link to the home destination is displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]

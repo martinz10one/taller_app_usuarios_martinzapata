@@ -1,0 +1,114 @@
+{
+  "run": "run2",
+  "total": 15,
+  "passed": 14,
+  "failed": 1,
+  "blocked": 0,
+  "casos": [
+    {
+      "id": "28ffb424-be38-4a95-ac0d-26d934d63426",
+      "titulo": "TC001-Iniciar sesión como administrador",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/28ffb424-be38-4a95-ac0d-26d934d63426"
+    },
+    {
+      "id": "77edc857-ee32-4f9e-945f-61b5bb2864b0",
+      "titulo": "TC002-Registrar una cuenta nueva y acceder al destino correcto",
+      "estado": "FAILED",
+      "error": "TEST FAILURE\n\nEl registro no se pudo completar: las distintas direcciones de correo probadas fueron rechazadas como ya registradas. No se alcanzó una sesión autenticada ni se pudo verificar la redirección correspondiente al rol.\n\nObservations:\n- El formulario de registro mostró «Ese email ya está registrado» para varias direcciones diferentes.\n- El formulario permaneció en la página de registro; no se mostró un destino autenticado.",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/77edc857-ee32-4f9e-945f-61b5bb2864b0"
+    },
+    {
+      "id": "92e96f11-a8e6-485f-9fb8-f9e86cb72a9b",
+      "titulo": "TC003-Crear cuenta y entrar al perfil",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/92e96f11-a8e6-485f-9fb8-f9e86cb72a9b"
+    },
+    {
+      "id": "dcceb6ca-b0a8-434a-bc0f-a053904ead06",
+      "titulo": "TC004-Iniciar sesión como usuario normal",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/dcceb6ca-b0a8-434a-bc0f-a053904ead06"
+    },
+    {
+      "id": "bff707e6-c223-4132-8a58-e5f0f0965e5f",
+      "titulo": "TC005-Cerrar sesión y volver al acceso público",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/bff707e6-c223-4132-8a58-e5f0f0965e5f"
+    },
+    {
+      "id": "50bbb6f9-3ac8-45a8-bc26-eb03c3c3b774",
+      "titulo": "TC006-Bloquear acceso a usuarios para un usuario normal",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/50bbb6f9-3ac8-45a8-bc26-eb03c3c3b774"
+    },
+    {
+      "id": "a98a6a69-2baa-4e62-8885-e680f5524de5",
+      "titulo": "TC007-Redirigir a la vista correcta según el rol al entrar",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/a98a6a69-2baa-4e62-8885-e680f5524de5"
+    },
+    {
+      "id": "4dc1b414-93c0-45cf-9540-bd7fef8d7c52",
+      "titulo": "TC008-Eliminar lógicamente un usuario con confirmación",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/4dc1b414-93c0-45cf-9540-bd7fef8d7c52"
+    },
+    {
+      "id": "c8ee0b15-f7dc-443c-a202-1f7461ea4153",
+      "titulo": "TC009-Crear un usuario nuevo desde el panel de administración",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/c8ee0b15-f7dc-443c-a202-1f7461ea4153"
+    },
+    {
+      "id": "22d939e7-f13e-4113-a080-437628e82e4d",
+      "titulo": "TC010-Editar un usuario existente desde el panel de administración",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/22d939e7-f13e-4113-a080-437628e82e4d"
+    },
+    {
+      "id": "e630cdfa-2e4a-488b-a399-c704331372ab",
+      "titulo": "TC011-Editar un usuario existente",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/e630cdfa-2e4a-488b-a399-c704331372ab"
+    },
+    {
+      "id": "c9b04b9b-f895-4980-bf44-fc3304f3d54b",
+      "titulo": "TC012-Bloquear el acceso a usuarios sin permisos",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/c9b04b9b-f895-4980-bf44-fc3304f3d54b"
+    },
+    {
+      "id": "060e4708-fd0c-49be-a135-548a71a68009",
+      "titulo": "TC013-Buscar usuarios en el listado",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/060e4708-fd0c-49be-a135-548a71a68009"
+    },
+    {
+      "id": "3ffc1797-8e0b-4f79-bbda-dcc336acfabc",
+      "titulo": "TC014-Buscar y filtrar usuarios desde el panel de administración",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/3ffc1797-8e0b-4f79-bbda-dcc336acfabc"
+    },
+    {
+      "id": "06da11ab-ef85-43a0-9a4e-08fa11d8a0e4",
+      "titulo": "TC015-Filtrar usuarios por rol",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/06da11ab-ef85-43a0-9a4e-08fa11d8a0e4"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "run": "run3",
+  "total": 1,
+  "passed": 1,
+  "failed": 0,
+  "blocked": 0,
+  "casos": [
+    {
+      "id": "77edc857-ee32-4f9e-945f-61b5bb2864b0",
+      "titulo": "TC002-Registrar una cuenta nueva y acceder al destino correcto",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/efa4daa1-e6ed-56a8-a635-d7cf46b38892/test/77edc857-ee32-4f9e-945f-61b5bb2864b0"
+    }
+  ]
+}

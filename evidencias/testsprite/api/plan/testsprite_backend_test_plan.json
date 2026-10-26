@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "post api auth registro create user account",
+    "description": "Verify that a new user can register with valid nombre, email, and password, receiving a 201 status with a token and user object without password."
+  },
+  {
+    "id": "TC002",
+    "title": "post api auth login authenticate user",
+    "description": "Verify that a user can log in with valid email and password, receiving a 200 status with a token and user object."
+  },
+  {
+    "id": "TC003",
+    "title": "get api auth perfil get authenticated user profile",
+    "description": "Verify that an authenticated user can retrieve their profile using a valid x-token header, receiving a 200 status with the user profile."
+  },
+  {
+    "id": "TC004",
+    "title": "put api auth perfil update authenticated user profile",
+    "description": "Verify that an authenticated user can update their nombre and/or email with valid data and a valid x-token header, receiving a 200 status with the updated user."
+  },
+  {
+    "id": "TC005",
+    "title": "put api auth password change user password",
+    "description": "Verify that an authenticated user can change their password by providing the correct current password and a valid new password, receiving a 200 status with a confirmation message."
+  },
+  {
+    "id": "TC006",
+    "title": "get api usuarios list users with admin role",
+    "description": "Verify that an admin user can list active users with optional search, role filter, pagination, and receive a 200 status with total, pagination data, and ordered user list."
+  },
+  {
+    "id": "TC007",
+    "title": "get api usuarios id get user details by id",
+    "description": "Verify that an admin user can retrieve details of an active user by valid id, receiving a 200 status with the user details."
+  },
+  {
+    "id": "TC008",
+    "title": "post api usuarios create new user by admin",
+    "description": "Verify that an admin user can create a new user with valid data, receiving a 201 status with the created user and ensuring the password is hashed."
+  },
+  {
+    "id": "TC009",
+    "title": "put api usuarios id update user details by admin",
+    "description": "Verify that an admin user can update user details partially by id, cannot change their own role, and receives a 200 status with the updated user."
+  },
+  {
+    "id": "TC010",
+    "title": "delete api usuarios id logical delete user by admin",
+    "description": "Verify that an admin user can logically delete a user by id, cannot delete their own account, and receives a 200 status with a confirmation message and the deactivated user."
+  }
+]

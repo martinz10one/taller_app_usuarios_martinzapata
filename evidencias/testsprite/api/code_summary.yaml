@@ -1,0 +1,177 @@
+version: "2"
+type: backend
+tech_stack:
+  - language: JavaScript (ES Modules, Node.js >= 22)
+  - framework: Express 4
+  - database: MongoDB with Mongoose 8
+  - other: JWT (jsonwebtoken), bcryptjs, express-validator
+features:
+  - name: Autenticación y perfil
+    description: Registro público, login, consulta y actualización del perfil y cambio de contraseña. El JWT viaja en el header x-token.
+    files:
+      - routes/auth.js
+      - controllers/auth.js
+      - middlewares/validar-jwt.js
+      - helpers/reglas-usuario.js
+      - models/usuario.js
+    endpoints:
+      - method: POST
+        path: /api/auth/registro
+        description: Crea una cuenta con rol usuario. Responde 201 con token y usuario sin password.
+        auth_required: false
+        request_schema:
+          body:
+            nombre: string (2-60 caracteres)
+            email: string (formato válido y único)
+            password: string (8-64, mayúscula, minúscula y número)
+        response_schema:
+          "201": "{ token: string, usuario: Usuario }"
+          "400": "Errores de validación o email duplicado"
+      - method: POST
+        path: /api/auth/login
+        description: Autentica con email y contraseña. Devuelve token y usuario.
+        auth_required: false
+        request_schema:
+          body:
+            email: string
+            password: string
+        response_schema:
+          "200": "{ token: string, usuario: Usuario }"
+          "400": "Errores de validación"
+          "401": "Credenciales inválidas o Usuario desactivado"
+      - method: GET
+        path: /api/auth/perfil
+        description: Devuelve el perfil del usuario autenticado.
+        auth_required: true
+        response_schema:
+          "200": Usuario
+          "401": "Token ausente, inválido o usuario desactivado"
+      - method: PUT
+        path: /api/auth/perfil
+        description: Actualiza nombre y/o email del usuario autenticado.
+        auth_required: true
+        request_schema:
+          body:
+            nombre: "string opcional (2-60)"
+            email: "string opcional (único)"
+        response_schema:
+          "200": Usuario
+          "400": "Validación o email perteneciente a otro usuario"
+          "401": "Token inválido"
+      - method: PUT
+        path: /api/auth/password
+        description: Cambia la contraseña verificando la contraseña actual.
+        auth_required: true
+        request_schema:
+          body:
+            passwordActual: string
+            passwordNueva: string (8-64, mayúscula, minúscula y número)
+        response_schema:
+          "200": "{ mensaje: 'Contraseña actualizada' }"
+          "400": "Contraseña actual incorrecta, nueva igual a la actual o validación"
+          "401": "Token inválido"
+  - name: Administración de usuarios
+    description: CRUD de usuarios solo para administradores, con búsqueda literal, filtro por rol, paginación y borrado lógico.
+    files:
+      - routes/usuarios.js
+      - controllers/usuarios.js
+      - middlewares/validar-rol.js
+      - helpers/reglas-usuario.js
+      - models/usuario.js
+    endpoints:
+      - method: GET
+        path: /api/usuarios
+        description: Lista solo usuarios activos, ordenados por nombre. Búsqueda por nombre o email y filtro por rol.
+        auth_required: true
+        request_schema:
+          query:
+            buscar: "string opcional (literal, insensible a mayúsculas)"
+            rol: "admin | usuario opcional"
+            pagina: "entero >= 1, por defecto 1"
+            limite: "entero 1-50, por defecto 10"
+        response_schema:
+          "200": "{ total: number, pagina: number, limite: number, totalPaginas: number, usuarios: Usuario[] }"
+          "400": "Parámetros inválidos"
+          "401": "Token ausente o inválido"
+          "403": "Rol distinto de admin"
+      - method: GET
+        path: /api/usuarios/:id
+        description: Devuelve un usuario activo por id.
+        auth_required: true
+        response_schema:
+          "200": Usuario
+          "400": "Id no válido"
+          "401": "Token ausente o inválido"
+          "403": "Rol distinto de admin"
+          "404": "Usuario no encontrado o desactivado"
+      - method: POST
+        path: /api/usuarios
+        description: Crea un usuario con contraseña hasheada.
+        auth_required: true
+        request_schema:
+          body:
+            nombre: string
+            email: string
+            password: string
+            rol: "admin | usuario opcional"
+        response_schema:
+          "201": Usuario
+          "400": "Validación o email duplicado"
+          "401": "Token ausente o inválido"
+          "403": "Rol distinto de admin"
+      - method: PUT
+        path: /api/usuarios/:id
+        description: Actualización parcial. Una password vacía o ausente no cambia la contraseña. Un admin no puede cambiar su propio rol.
+        auth_required: true
+        request_schema:
+          body:
+            nombre: "string opcional"
+            email: "string opcional"
+            password: "string opcional"
+            rol: "admin | usuario opcional"
+        response_schema:
+          "200": Usuario
+          "400": "Id o datos inválidos; intento de cambiar el propio rol"
+          "401": "Token ausente o inválido"
+          "403": "Rol distinto de admin"
+          "404": "Usuario no encontrado o desactivado"
+      - method: DELETE
+        path: /api/usuarios/:id
+        description: Borrado lógico (estado false). Un admin no puede eliminarse a sí mismo.
+        auth_required: true
+        response_schema:
+          "200": "{ mensaje: 'Usuario eliminado', usuario: Usuario }"
+          "400": "Id no válido o intento de eliminar la propia cuenta"
+          "401": "Token ausente o inválido"
+          "403": "Rol distinto de admin"
+          "404": "Usuario no encontrado o ya desactivado"
+  - name: Rutas generales
+    description: Comprobación de salud, 404 en JSON y manejo centralizado de errores.
+    files:
+      - app.js
+    endpoints:
+      - method: GET
+        path: /api/health
+        description: Estado del servicio.
+        auth_required: false
+        response_schema:
+          "200": "{ status: 'ok' }"
+      - method: ANY
+        path: /api/no-existe
+        description: Cualquier ruta inexistente responde 404 en JSON.
+        auth_required: false
+        response_schema:
+          "404": "{ error: 'Ruta no encontrada' }"
+      - method: POST
+        path: /api/usuarios (JSON mal formado)
+        description: Un cuerpo con JSON inválido responde 400.
+        auth_required: true
+        response_schema:
+          "400": "{ error: 'El cuerpo de la petición no es un JSON válido' }"
+known_limitations:
+  - issue: La API no habilita CORS; la web usa el proxy de Vite en desarrollo.
+    location: app.js
+    impact: Las llamadas directas desde otro origen del navegador quedan bloqueadas.
+  - issue: El JWT se envía en el header personalizado x-token, no en Authorization Bearer.
+    location: middlewares/validar-jwt.js
+    impact: Herramientas que solo inyectan Bearer necesitan configuración personalizada.

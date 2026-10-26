@@ -16,4 +16,11 @@ export default defineConfig({
             '/api': 'http://localhost:3000',
         },
     },
+    preview: {
+        port: 5173,
+        // El build de producción también necesita el proxy para hablar con la API
+        proxy: {
+            '/api': 'http://localhost:3000',
+        },
+    },
 })

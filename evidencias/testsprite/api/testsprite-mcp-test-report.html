@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>TestSprite — api</title><style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#1f2937;line-height:1.55}
+h1{border-bottom:3px solid #2563eb;padding-bottom:.4rem}
+h2{margin-top:2rem;color:#1e40af}
+h3{margin-top:1.5rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem}
+th,td{border:1px solid #d1d5db;padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{background:#eff6ff}
+code{background:#f3f4f6;padding:.1rem .3rem;border-radius:4px}
+a{color:#1d4ed8}
+blockquote{border-left:4px solid #93c5fd;background:#f8fafc;margin:1rem 0;padding:.5rem 1rem;color:#374151}
+</style></head>
+<body>
+<h1>TestSprite AI Testing Report (MCP) — API</h1>
+<hr />
+<h2>1️⃣ Document Metadata</h2>
+<ul>
+<li><strong>Project Name:</strong> api (App de usuarios — API REST)</li>
+<li><strong>Date:</strong> 2026-10-26</li>
+<li><strong>Prepared by:</strong> TestSprite AI Team; revisado y completado por Martin Zapata</li>
+<li><strong>Execution type:</strong> backend, scope <code>codebase</code></li>
+<li><strong>Local endpoint:</strong> <code>http://localhost:3000</code></li>
+<li><strong>Authentication:</strong> API key header <code>x-token</code> con un JWT de administrador (caducidad 4 h)</li>
+<li><strong>PRD usado:</strong> <a href="../../../PRD.md"><code>PRD.md</code></a></li>
+<li><strong>Plan de pruebas:</strong> <a href="plan/testsprite_backend_test_plan.json"><code>plan/testsprite_backend_test_plan.json</code></a></li>
+<li><strong>Código analizado:</strong> <a href="code_summary.yaml"><code>code_summary.yaml</code></a></li>
+</ul>
+<hr />
+<h2>2️⃣ Requirement Validation Summary</h2>
+<h3>Requirement: Autenticación y perfil</h3>
+<ul>
+<li><strong>Description:</strong> Registro público, login, consulta del perfil, actualización de nombre/email y cambio de contraseña. El JWT viaja en el header <code>x-token</code>.</li>
+</ul>
+<h4>Test TC001 post api auth registro create user account</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC001_post_api_auth_registro_create_user_account.py">TC001</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/e29c9166-b4ea-4e0d-9cd3-f91a4b89dec6">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/e29c9166-b4ea-4e0d-9cd3-f91a4b89dec6</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El registro devuelve 201 con <code>token</code> y <code>usuario</code>, sin <code>password</code>. El rol queda forzado a <code>usuario</code>.</li>
+</ul>
+<h4>Test TC002 post api auth login authenticate user</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC002_post_api_auth_login_authenticate_user.py">TC002</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/8aef2e80-abae-4fbf-a50c-100d31003280">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/8aef2e80-abae-4fbf-a50c-100d31003280</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> Login correcto con 200, <code>token</code> y usuario con <code>uid</code>. No se expone el hash de la contraseña.</li>
+</ul>
+<h4>Test TC003 get api auth perfil get authenticated user profile</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC003_get_api_auth_perfil_get_authenticated_user_profile.py">TC003</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/50b640de-105c-4999-9316-3f71ec979308">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/50b640de-105c-4999-9316-3f71ec979308</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> <code>GET /api/auth/perfil</code> con <code>x-token</code> válido responde 200 con los datos del usuario autenticado.</li>
+</ul>
+<h4>Test TC004 put api auth perfil update authenticated user profile</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC004_put_api_auth_perfil_update_authenticated_user_profile.py">TC004</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/901db8d3-bdc0-4e50-bdee-7230178fb424">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/901db8d3-bdc0-4e50-bdee-7230178fb424</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> La actualización parcial de <code>nombre</code> y <code>email</code> responde 200 y conserva el mismo <code>uid</code>.</li>
+</ul>
+<h4>Test TC005 put api auth password change user password</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC005_put_api_auth_password_change_user_password.py">TC005</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/bc9df9b9-18be-4c50-8c98-75ffe05b5430">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/bc9df9b9-18be-4c50-8c98-75ffe05b5430</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El cambio de contraseña responde 200, el login con la nueva contraseña funciona y el login con la anterior deja de funcionar.</li>
+</ul>
+<hr />
+<h3>Requirement: Administración de usuarios</h3>
+<ul>
+<li><strong>Description:</strong> CRUD de usuarios restringido a administradores, con búsqueda, filtro por rol, paginación, reglas de auto-protección y borrado lógico.</li>
+</ul>
+<h4>Test TC006 get api usuarios list users with admin role</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC006_get_api_usuarios_list_users_with_admin_role.py">TC006</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/411af12e-c24d-4cba-b470-291c51c87782">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/411af12e-c24d-4cba-b470-291c51c87782</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El listado devuelve <code>total</code>, <code>pagina</code>, <code>limite</code>, <code>totalPaginas</code> y usuarios activos ordenados por nombre.</li>
+</ul>
+<h4>Test TC007 get api usuarios id get user details by id</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC007_get_api_usuarios_id_get_user_details_by_id.py">TC007</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/95b21e0c-91c8-4cd6-8b7c-17644296e71b">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/95b21e0c-91c8-4cd6-8b7c-17644296e71b</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> <code>GET /api/usuarios/:id</code> con id válido devuelve 200 y el usuario solicitado.</li>
+</ul>
+<h4>Test TC008 post api usuarios create new user by admin</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC008_post_api_usuarios_create_new_user_by_admin.py">TC008</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/b37bf8c0-9210-4c1c-96dc-5282fe1b5c37">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/b37bf8c0-9210-4c1c-96dc-5282fe1b5c37</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El admin crea un usuario con 201; la contraseña se guarda hasheada y nunca se devuelve.</li>
+</ul>
+<h4>Test TC009 put api usuarios id update user details by admin</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC009_put_api_usuarios_id_update_user_details_by_admin.py">TC009</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/05c52fc4-93ed-4427-ba0d-943f1f646ed0">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/05c52fc4-93ed-4427-ba0d-943f1f646ed0</a></li>
+<li><strong>Status:</strong> ✅ Passed (run 3)</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> En la ejecución 2 este caso falló por un defecto del propio test generado: envió <code>rol: "admin"</code> al admin (mismo rol), por lo que el 200 era correcto. En la ejecución 3 se envió <code>rol: "usuario"</code> y la API respondió 400 <code>No puedes cambiar tu propio rol</code>. Comportamiento verificado también manualmente y con la prueba de integración <a href="../../../api/tests/integration/usuarios.test.js"><code>api/tests/integration/usuarios.test.js</code></a>.</li>
+</ul>
+<h4>Test TC010 delete api usuarios id logical delete user by admin</h4>
+<ul>
+<li><strong>Test Code:</strong> <a href="ejecuciones/run3/casos/TC010_delete_api_usuarios_id_logical_delete_user_by_admin.py">TC010</a></li>
+<li><strong>Test Visualization and Result:</strong> <a href="https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/be361980-e9bf-4b5c-802a-620ab0523d93">https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/be361980-e9bf-4b5c-802a-620ab0523d93</a></li>
+<li><strong>Status:</strong> ✅ Passed</li>
+<li><strong>Severity:</strong> LOW</li>
+<li><strong>Analysis / Findings:</strong> El borrado lógico responde 200 con <code>mensaje: "Usuario eliminado"</code> y el usuario deja de estar activo.</li>
+</ul>
+<hr />
+<h2>3️⃣ Coverage &amp; Matching Metrics</h2>
+<p>Ejecuciones realizadas:</p>
+<table>
+<thead>
+<tr>
+<th>Ejecución</th>
+<th>Motivo</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">✅ Passed</th>
+<th style="text-align: right;">❌ Failed</th>
+<th style="text-align: right;">⛔ Blocked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>run1</td>
+<td>Primera ejecución</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>run2</td>
+<td>Segunda ejecución (estabilidad)</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>run3</td>
+<td>Repetición tras analizar el fallo de TC009</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>100 % de los casos del plan pasan en la ejecución final (run3).</strong></li>
+<li>Los 10 casos del plan cubren autenticación/perfil (5) y administración de usuarios (5).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th style="text-align: right;">Total Tests</th>
+<th style="text-align: right;">✅ Passed</th>
+<th style="text-align: right;">❌ Failed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autenticación y perfil</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Administración de usuarios</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Evidencias de cada ejecución en <a href="ejecuciones/"><code>ejecuciones/</code></a>. Panel local de TestSprite en <a href="../paneles/api-final-run3-10-10.png"><code>../paneles/api-final-run3-10-10.png</code></a> y fallo de la ejecución 2 en <a href="../paneles/api-run2-9-10.png"><code>../paneles/api-run2-9-10.png</code></a>.</p>
+<hr />
+<h2>4️⃣ Key Gaps / Risks</h2>
+<blockquote>
+<p><strong>Cobertura del plan:</strong> TestSprite generó 10 casos, centrados en caminos felices. No generó casos negativos de 401/403, ids mal formados, paginación fuera de rango, JSON inválido ni contraseñas débiles. Esos casos sí están cubiertos por las 80 pruebas de Vitest/Supertest del proyecto.</p>
+<p><strong>Dependencia de estado:</strong> los casos usan datos creados y borrados contra una base MongoDB real (<code>app-usuarios-testsprite</code>). Un email de un usuario borrado lógicamente sigue reservado por el índice único; es el comportamiento esperado, pero obliga a usar emails nuevos en cada repetición.</p>
+<p><strong>Credenciales en el código generado:</strong> TestSprite incrustó el JWT de administrador en los archivos Python. Las copias de evidencia están redactadas con <code>&lt;ADMIN_JWT_REDACTED&gt;</code>; la carpeta de trabajo <code>api/testsprite_tests/</code> está ignorada por Git.</p>
+<p><strong>Valor añadido:</strong> la ejecución 2 detectó un falso positivo (TC009) que permitió revisar la regla de auto-cambio de rol y confirmar que la API responde 400 cuando realmente se intenta cambiar el rol. No se encontró ningún error real en la API.</p>
+</blockquote>
+</body>
+</html>

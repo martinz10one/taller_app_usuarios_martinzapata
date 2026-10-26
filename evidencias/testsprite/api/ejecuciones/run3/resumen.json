@@ -1,0 +1,79 @@
+{
+  "run": "run3",
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "blocked": 0,
+  "casos": [
+    {
+      "id": "e29c9166-b4ea-4e0d-9cd3-f91a4b89dec6",
+      "titulo": "TC001-post api auth registro create user account",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/e29c9166-b4ea-4e0d-9cd3-f91a4b89dec6"
+    },
+    {
+      "id": "8aef2e80-abae-4fbf-a50c-100d31003280",
+      "titulo": "TC002-post api auth login authenticate user",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/8aef2e80-abae-4fbf-a50c-100d31003280"
+    },
+    {
+      "id": "50b640de-105c-4999-9316-3f71ec979308",
+      "titulo": "TC003-get api auth perfil get authenticated user profile",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/50b640de-105c-4999-9316-3f71ec979308"
+    },
+    {
+      "id": "901db8d3-bdc0-4e50-bdee-7230178fb424",
+      "titulo": "TC004-put api auth perfil update authenticated user profile",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/901db8d3-bdc0-4e50-bdee-7230178fb424"
+    },
+    {
+      "id": "bc9df9b9-18be-4c50-8c98-75ffe05b5430",
+      "titulo": "TC005-put api auth password change user password",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/bc9df9b9-18be-4c50-8c98-75ffe05b5430"
+    },
+    {
+      "id": "411af12e-c24d-4cba-b470-291c51c87782",
+      "titulo": "TC006-get api usuarios list users with admin role",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/411af12e-c24d-4cba-b470-291c51c87782"
+    },
+    {
+      "id": "95b21e0c-91c8-4cd6-8b7c-17644296e71b",
+      "titulo": "TC007-get api usuarios id get user details by id",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/95b21e0c-91c8-4cd6-8b7c-17644296e71b"
+    },
+    {
+      "id": "b37bf8c0-9210-4c1c-96dc-5282fe1b5c37",
+      "titulo": "TC008-post api usuarios create new user by admin",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/b37bf8c0-9210-4c1c-96dc-5282fe1b5c37"
+    },
+    {
+      "id": "05c52fc4-93ed-4427-ba0d-943f1f646ed0",
+      "titulo": "TC009-put api usuarios id update user details by admin",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/05c52fc4-93ed-4427-ba0d-943f1f646ed0"
+    },
+    {
+      "id": "be361980-e9bf-4b5c-802a-620ab0523d93",
+      "titulo": "TC010-delete api usuarios id logical delete user by admin",
+      "estado": "PASSED",
+      "error": "",
+      "url": "https://www.testsprite.com/dashboard/mcp/tests/f31cc8a0-b665-5a6f-959c-42d2579c7531/test/be361980-e9bf-4b5c-802a-620ab0523d93"
+    }
+  ]
+}
